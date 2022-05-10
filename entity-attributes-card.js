@@ -28,8 +28,8 @@ class EntityAttributesCard extends HTMLElement {
     filters.forEach((filter) => {
       const filters = [];
       filters.push(stateObj => _filterName(stateObj, filter));
-      Object.keys(hass.states).sort().forEach(key => {
-        Object.keys(hass.states[key].attributes).sort().forEach(attr_key => {
+      Object.keys(hass.states).forEach(key => {
+        Object.keys(hass.states[key].attributes).forEach(attr_key => {
           if (filters.every(filterFunc => filterFunc(`${key}.${attr_key}`))) {
             attributes.set(`${key}.${attr_key}`, {
               name: `${filter.name?filter.name:attr_key.replace(/_/g, ' ')}`,
